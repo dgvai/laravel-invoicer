@@ -72,9 +72,9 @@ class InvoiceController extends Controller
                 ->setBuyer('John Doe','email@email.com','0100001000')
                 ->setShippingAddr('0/3B Abul Tabul Conference Road, DG Street, China');
 
-        $invoice->addItem('Lorem Ipsum Product Name 1',3,'Pc',230,20)
-                ->addItem('Lorem Ipsum Product Name 2',3,'Kg',120,10,60)
-                ->addItem('Bigger Abul Tabul Product Name This Time',1,'Pc',550,10,10);
+        $invoice->addItem('Lorem Ipsum Product Name 1',3.5,'Pc',230.5,20)
+                ->addItem('Lorem Ipsum Product Name 2',3,'Kg',120.33,10.2,60)
+                ->addItem('Bigger Abul Tabul Product Name This Time',1,'Pc',550.52,10,10);
 
         $invoice->setPaymentState('UNPAID','important','Pay before 24-02-2020');
 
@@ -87,7 +87,8 @@ class InvoiceController extends Controller
     }
 }
 ```
-**NOTE** This is the minimalist basic need to generate invoice PDF.
+**NOTE** This is the minimalist basic need to generate invoice PDF.  
+**Example PDF** Have look at this [example](examples/demofile.pdf) pdf generated.
 
 ## Available Methods
 
