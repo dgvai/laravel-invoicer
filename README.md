@@ -19,7 +19,7 @@ This package is built for Invoice Management and Generation for Laravel 5.5+, 6.
         - [Set Shipping Address](#set-shipping-address)
         - [Add Items](#add-items)
         - [Set Payment State](#set-payment-state)
-        - [Generate Invoice](#generate-invoice)
+        - [Generate](#generate)
     - [Changelog](#changelog)
     - [License](#license)
 
@@ -141,7 +141,7 @@ class InvoiceController extends Controller
 <kbd>optional</kbd> Label : ``enums`` : [success/important/warning]  
 <kbd>optional</kbd> Additional : ``string`` : Additional note on payment to show  
 
-### Generate Invoice
+### Generate
 **Description:** Generate the Invoice PDF.
 ```php
     generate($path_to_save=null)
