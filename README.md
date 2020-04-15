@@ -1,4 +1,12 @@
 # Invoicer - Invoice Generator Package for Laravel
+
+[![Latest Stable Version](https://poser.pugx.org/dgvai/laravel-invoicer/v/stable)](https://packagist.org/packages/dgvai/laravel-invoicer)
+[![Total Downloads](https://poser.pugx.org/dgvai/laravel-invoicer/downloads)](https://packagist.org/packages/dgvai/laravel-invoicer)
+[![Latest Unstable Version](https://poser.pugx.org/dgvai/laravel-invoicer/v/unstable)](https://packagist.org/packages/dgvai/laravel-invoicer)
+[![License](https://poser.pugx.org/dgvai/laravel-invoicer/license)](https://packagist.org/packages/dgvai/laravel-invoicer)
+[![Monthly Downloads](https://poser.pugx.org/dgvai/laravel-invoicer/d/monthly)](https://packagist.org/packages/dgvai/laravel-invoicer)
+[![Daily Downloads](https://poser.pugx.org/dgvai/laravel-invoicer/d/daily)](https://packagist.org/packages/dgvai/laravel-invoicer)
+[![composer.lock](https://poser.pugx.org/dgvai/laravel-invoicer/composerlock)](https://packagist.org/packages/dgvai/laravel-invoicer)
     
 This package is built for Invoice Management and Generation for Laravel 5.5+, 6.x, 7.x (not tested for lower versions)
 
