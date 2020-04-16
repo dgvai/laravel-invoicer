@@ -30,7 +30,7 @@ class InvoicerParams
 
     protected function getSubTotal($unit_price,$qty,$discount)
     {
-        return $this->format($this->unitDiscount() ? ($unit_price - $discount) * $qty : ($unit_price * $qty) - $discount);
+        return $this->unitDiscount() ? ($unit_price - $discount) * $qty : ($unit_price * $qty) - $discount;
     }
 
     protected function vatCalculate()
@@ -38,7 +38,7 @@ class InvoicerParams
         if(config('invoicer.vat.allowed'))
         {
             $this->vat['number'] = config('invoicer.vat.title').': '.config('invoicer.vat.number');
-            $this->vat['amount'] = $this->format($this->sum_total*(config('invoicer.vat.percent')/100));
+            $this->vat['amount'] = $this->sum_total*(config('invoicer.vat.percent')/100);
         }
         else 
         {
