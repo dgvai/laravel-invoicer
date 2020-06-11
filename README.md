@@ -6,8 +6,8 @@
 [![License](https://poser.pugx.org/dgvai/laravel-invoicer/license)](https://packagist.org/packages/dgvai/laravel-invoicer)
 [![Monthly Downloads](https://poser.pugx.org/dgvai/laravel-invoicer/d/monthly)](https://packagist.org/packages/dgvai/laravel-invoicer)
 [![Daily Downloads](https://poser.pugx.org/dgvai/laravel-invoicer/d/daily)](https://packagist.org/packages/dgvai/laravel-invoicer)
-[![composer.lock](https://poser.pugx.org/dgvai/laravel-invoicer/composerlock)](https://packagist.org/packages/dgvai/laravel-invoicer)
-    
+[![composer.lock](https://poser.pugx.org/dgvai/laravel-invoicer/composerlock)](https://packagist.org/packages/dgvai/laravel-invoicer
+
 This package is built for Invoice Management and Generation for Laravel 5.5+, 6.x, 7.x (not tested for lower versions)
 
 ## Contents
@@ -25,6 +25,8 @@ This package is built for Invoice Management and Generation for Laravel 5.5+, 6.
         - [Setup Invoice](#setup-invoice)
         - [Setup Buyer Informations](#setup-buyer-informations)
         - [Set Shipping Address](#set-shipping-address)
+        - [Set Shipping Cost](#set-shipping-cost)
+        - [Set Home Delivery Cost](#set-home-delivery-cost)
         - [Add Items](#add-items)
         - [Set Payment State](#set-payment-state)
         - [Generate](#generate)
@@ -96,7 +98,8 @@ class InvoiceController extends Controller
 }
 ```
 **NOTE** This is the minimalist basic need to generate invoice PDF.  
-**Example PDF** Have look at this [example](examples/demofile.pdf) pdf generated.
+**Example PDF** Have look at this [example](examples/demofile.pdf) pdf generated.  
+**Example PDF (v2)** Have look at this [advanced example (v2)](examples/demo-advanced.pdf) pdf generated.  
 
 ## Available Methods
 
@@ -120,17 +123,33 @@ class InvoiceController extends Controller
 <kbd>optional</kbd> Buyer Phone : ``string``  
 
 ### Set Shipping Address
-**Description:** Set the buyer/user shiiping address.
+**Description:** Set the buyer/user shipping address.
 ```php
     setShippingAddr($address)
 ```
 **Params**  
 <kbd>required</kbd> Buyer Shipping Address : ``string``  
 
+### Set Shipping Cost
+**Description:** Set the buyer/user shipping cost.
+```php
+    setShippingCost($cost)
+```
+**Params**  
+<kbd>required</kbd> Buyer Shipping Cost : ``numeric``  
+
+### Set Home Delivery Cost
+**Description:** Set the buyer/user Home Delivery cost.
+```php
+    setHomeDeliveryCost($cost)
+```
+**Params**  
+<kbd>required</kbd> Buyer Home Delivery Cost : ``numeric``  
+
 ### Add Items
 **Description:** Add the items buyer/user bought, eg. from cart or order history.
 ```php
-    addItem($title, $qty, $unit, $unit_price, $discount, $shipping_cost = 0)
+    addItem($title, $qty, $unit, $unit_price, $discount, $extra_cost = 0, $additional_shipping = 0)
 ```
 **Params**  
 <kbd>required</kbd> Item Title : ``string``  
@@ -138,7 +157,8 @@ class InvoiceController extends Controller
 <kbd>required</kbd> Item Unit : ``string``  : eg. Pc/Kg/Plate...  
 <kbd>required</kbd> Item Unit Price : ``decimal``  
 <kbd>required</kbd> Item Discount : ``decimal``  
-<kbd>optional</kbd> Item Shipping Cost : ``decimal``  
+<kbd>optional</kbd> Item Extra Cost : ``decimal``  
+<kbd>optional</kbd> Item Additional Shipping Cost : ``decimal``  
 
 ### Set Payment State
 **Description:** Set the payment state of the invoice. Also add some notes.

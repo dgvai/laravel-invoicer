@@ -56,9 +56,12 @@
             'qty' =>  env('INVOICER_HEADER_QTY','Qty'),
             'unit' =>  env('INVOICER_HEADER_UNIT','Unit Price'),
             'discount' =>  env('INVOICER_HEADER_DISCOUNT','Discount'),
+            'extra' =>  env('INVOICER_HEADER_EXTRA','Extra Cost'),
+            'addship' =>  env('INVOICER_HEADER_ADDSHIP','Add. Shipping'),
             'subtotal' =>  env('INVOICER_HEADER_DISCOUNT','Subtotal'),
             'sumtotal' =>  env('INVOICER_HEADER_TOTAL','Sum Total'),
             'shipping' =>  env('INVOICER_HEADER_SHIPPING','Shipping Cost'),
+            'homecost' =>  env('INVOICER_HEADER_HOMECOST','Home Delivery Cost'),
         ],
 
         /**
@@ -98,6 +101,11 @@
             'percent' => env('INVOICER_VAT_PERCENT','15'),
             'title' => env('INVOICER_VAT_TITLE','VAT Reg. No'),
             'number' => env('INVOICER_VAT_NUMBER','000-00000-00000-0'),
+        ],
+
+        'enabled' => [
+            'extra' => false,
+            'addship' => false,
         ]
 
 

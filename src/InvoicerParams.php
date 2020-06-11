@@ -15,6 +15,7 @@ class InvoicerParams
 
     public $sum_total = 0;
     public $ship_total = 0;
+    public $home_cost = 0;
     public $total = 0;
 
     public $vat;
@@ -28,9 +29,10 @@ class InvoicerParams
         return config('invoicer.discount_type') == '1' ? true : false;
     }
 
-    protected function getSubTotal($unit_price,$qty,$discount)
+    protected function getSubTotal($unit_price, $qty, $discount, $extra_cost, $additional_shipping)
     {
-        return $this->unitDiscount() ? ($unit_price - $discount) * $qty : ($unit_price * $qty) - $discount;
+        $price = $unit_price + $extra_cost + $additional_shipping;
+        return $this->unitDiscount() ? ($price - $discount) * $qty : ($price * $qty) - $discount;
     }
 
     protected function vatCalculate()
@@ -49,7 +51,7 @@ class InvoicerParams
 
     protected function totalCalculate()
     {
-        $this->total = $this->format($this->sum_total + $this->vat['amount'] + $this->ship_total);
+        $this->total = $this->format($this->sum_total + $this->vat['amount'] + $this->ship_total + $this->home_cost);
     }
 
     private function format($number)

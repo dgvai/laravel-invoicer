@@ -32,16 +32,29 @@ class Invoicer extends InvoicerParams
         return $this;
     }
 
-    public function addItem($title, $qty, $unit, $unit_price, $discount, $shipping_cost = 0)
+    public function setShippingCost($cost)
+    {
+        $this->ship_total += $cost;
+        return $this;
+    }
+
+    public function setHomeDeliveryCost($cost)
+    {
+        $this->home_cost += $cost;
+        return $this;
+    }
+
+    public function addItem($title, $qty, $unit, $unit_price, $discount, $extra_cost = 0, $additional_shipping = 0)
     {
         $item['title'] = $title;
         $item['qty'] = $qty.' '.$unit;
         $item['price'] = $unit_price; 
         $item['discount'] = $discount; 
-        $item['subtotal'] = $this->getSubTotal($unit_price,$qty,$discount);
+        $item['extra'] = $extra_cost; 
+        $item['addship'] = $additional_shipping; 
+        $item['subtotal'] = $this->getSubTotal($unit_price, $qty, $discount, $extra_cost, $additional_shipping);
         $this->sum_total += $item['subtotal'];
-        $this->ship_total += $shipping_cost;
-
+        
         array_push($this->items,$item);
         return $this;
     }
