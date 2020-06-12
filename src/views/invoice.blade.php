@@ -1,3 +1,6 @@
+@php 
+$colspan = 4;
+@endphp
 <html>
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -50,6 +53,14 @@
                         <td class="float-center">{{config('invoicer.header.qty')}}</td>
                         <td class="float-right">{{config('invoicer.header.unit')}}</td>
                         <td class="float-right">{{config('invoicer.header.discount')}}</td>
+                        @if(config('invoicer.enabled.extra'))
+                        @php $colspan++ @endphp
+                        <td class="float-right">{{config('invoicer.header.extra')}}</td>
+                        @endif
+                        @if(config('invoicer.enabled.addship'))
+                        @php $colspan++ @endphp
+                        <td class="float-right">{{config('invoicer.header.addship')}}</td>
+                        @endif
                         <td class="float-right">{{config('invoicer.header.subtotal')}}</td>
                     </tr>
                 </thead>
@@ -61,26 +72,37 @@
                         <td class="float-center">{{$item['qty']}}</td>
                         <td class="float-right">{{$item['price']}} {{config('invoicer.currency')}}</td>
                         <td class="float-right">{{$item['discount']}} {{config('invoicer.currency')}}</td>
+                        @if(config('invoicer.enabled.extra'))
+                        <td class="float-right">{{$item['extra']}} {{config('invoicer.currency')}}</td>
+                        @endif
+                        @if(config('invoicer.enabled.addship'))
+                        <td class="float-right">{{$item['addship']}} {{config('invoicer.currency')}}</td>
+                        @endif
                         <td class="float-right">{{$item['subtotal']}} {{config('invoicer.currency')}}</td>
                     </tr>
                     @endforeach
                     <tr>
-                        <td class="no-top-tr" colspan="4"></td>
+                        <td class="no-top-tr" colspan="{{$colspan}}"></td>
                         <td class="float-right small">{{config('invoicer.header.sumtotal')}}</td>
                         <td class="float-right small">{{$that->sum_total}} {{config('invoicer.currency')}}</td>
                     </tr>
                     <tr>
-                        <td class="no-top-tr float-left small" colspan="4">{{$that->vat['number']}}</td>
+                        <td class="no-top-tr float-left small" colspan="{{$colspan}}">{{$that->vat['number']}}</td>
                         <td class="float-right small">VAT/TAX</td>
                         <td class="float-right small">{{$that->vat['amount']}} {{config('invoicer.currency')}}</td>
                     </tr>
                     <tr>
-                        <td class="no-top-tr" colspan="4"></td>
+                        <td class="no-top-tr" colspan="{{$colspan}}"></td>
                         <td class="float-right small">{{config('invoicer.header.shipping')}}</td>
                         <td class="float-right small">{{$that->ship_total}} {{config('invoicer.currency')}}</td>
                     </tr>
                     <tr>
-                        <td class="no-top-tr" colspan="4"></td>
+                        <td class="no-top-tr" colspan="{{$colspan}}"></td>
+                        <td class="float-right small">{{config('invoicer.header.homecost')}}</td>
+                        <td class="float-right small">{{$that->home_cost}} {{config('invoicer.currency')}}</td>
+                    </tr>
+                    <tr>
+                        <td class="no-top-tr" colspan="{{$colspan}}"></td>
                         <td class="float-right title">Total</td>
                         <td class="float-right">{{$that->total}} {{config('invoicer.currency')}}</td>
                     </tr>
