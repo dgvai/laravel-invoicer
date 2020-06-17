@@ -59,6 +59,13 @@ class Invoicer extends InvoicerParams
         return $this;
     }
 
+    public function applyCoupon($code, $discount)
+    {
+        $this->coupon_code = $code;
+        $this->coupon_discount = $discount;
+        return $this;
+    }
+
     public function setPaymentState($state, $label='info', $additional=null)
     {
         $this->payment_state = $state;

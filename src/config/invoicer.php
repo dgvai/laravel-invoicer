@@ -62,6 +62,7 @@
             'sumtotal' =>  env('INVOICER_HEADER_TOTAL','Sum Total'),
             'shipping' =>  env('INVOICER_HEADER_SHIPPING','Shipping Cost'),
             'homecost' =>  env('INVOICER_HEADER_HOMECOST','Home Delivery Cost'),
+            'coupon' =>  env('INVOICER_HEADER_COUPON','Coupon Discount'),
         ],
 
         /**
