@@ -1,5 +1,6 @@
 @php 
-$colspan = 4;
+$colspan1 = 2;
+$colspan2 = 2;
 @endphp
 <html>
     <head>
@@ -82,28 +83,37 @@ $colspan = 4;
                     </tr>
                     @endforeach
                     <tr>
-                        <td class="no-top-tr" colspan="{{$colspan}}"></td>
-                        <td class="float-right small">{{config('invoicer.header.sumtotal')}}</td>
+                        <td class="no-top-tr" colspan="{{$colspan1}}"></td>
+                        <td class="float-right small" colspan="{{$colspan2}}">{{config('invoicer.header.sumtotal')}}</td>
                         <td class="float-right small">{{$that->sum_total}} {{config('invoicer.currency')}}</td>
                     </tr>
+                    @if(config('invoicer.vat.allowed'))
                     <tr>
-                        <td class="no-top-tr float-left small" colspan="{{$colspan}}">{{$that->vat['number']}}</td>
-                        <td class="float-right small">VAT/TAX</td>
+                        <td class="no-top-tr float-left small" colspan="{{$colspan1}}">{{$that->vat['number']}}</td>
+                        <td class="float-right small" colspan="{{$colspan2}}">VAT/TAX</td>
                         <td class="float-right small">{{$that->vat['amount']}} {{config('invoicer.currency')}}</td>
                     </tr>
+                    @endif
                     <tr>
-                        <td class="no-top-tr" colspan="{{$colspan}}"></td>
-                        <td class="float-right small">{{config('invoicer.header.shipping')}}</td>
+                        <td class="no-top-tr" colspan="{{$colspan1}}"></td>
+                        <td class="float-right small" colspan="{{$colspan2}}">{{config('invoicer.header.shipping')}}</td>
                         <td class="float-right small">{{$that->ship_total}} {{config('invoicer.currency')}}</td>
                     </tr>
                     <tr>
-                        <td class="no-top-tr" colspan="{{$colspan}}"></td>
-                        <td class="float-right small">{{config('invoicer.header.homecost')}}</td>
+                        <td class="no-top-tr" colspan="{{$colspan1}}"></td>
+                        <td class="float-right small" colspan="{{$colspan2}}">{{config('invoicer.header.homecost')}}</td>
                         <td class="float-right small">{{$that->home_cost}} {{config('invoicer.currency')}}</td>
                     </tr>
+                    @if($that->coupon_discount > 0)
                     <tr>
-                        <td class="no-top-tr" colspan="{{$colspan}}"></td>
-                        <td class="float-right title">Total</td>
+                        <td class="no-top-tr" colspan="{{$colspan1}}">#{{$that->coupon_code}}</td>
+                        <td class="float-right small" colspan="{{$colspan2}}">{{config('invoicer.header.coupon')}}</td>
+                        <td class="float-right small">{{$that->coupon_discount}} {{config('invoicer.currency')}}</td>
+                    </tr>
+                    @endif
+                    <tr>
+                        <td class="no-top-tr" colspan="{{$colspan1}}"></td>
+                        <td class="float-right title" colspan="{{$colspan2}}">Total</td>
                         <td class="float-right">{{$that->total}} {{config('invoicer.currency')}}</td>
                     </tr>
                 </tbody>

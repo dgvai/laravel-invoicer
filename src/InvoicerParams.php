@@ -20,6 +20,9 @@ class InvoicerParams
 
     public $vat;
 
+    public $coupon_discount = 0;
+    public $coupon_code;
+
     public $payment_state;
     public $label;
     public $additional;
@@ -51,7 +54,7 @@ class InvoicerParams
 
     protected function totalCalculate()
     {
-        $this->total = $this->format($this->sum_total + $this->vat['amount'] + $this->ship_total + $this->home_cost);
+        $this->total = $this->format(($this->sum_total + $this->vat['amount'] + $this->ship_total + $this->home_cost) - $this->coupon_discount);
     }
 
     private function format($number)

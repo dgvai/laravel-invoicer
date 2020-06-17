@@ -6,7 +6,7 @@
 [![License](https://poser.pugx.org/dgvai/laravel-invoicer/license)](https://packagist.org/packages/dgvai/laravel-invoicer)
 [![Monthly Downloads](https://poser.pugx.org/dgvai/laravel-invoicer/d/monthly)](https://packagist.org/packages/dgvai/laravel-invoicer)
 [![Daily Downloads](https://poser.pugx.org/dgvai/laravel-invoicer/d/daily)](https://packagist.org/packages/dgvai/laravel-invoicer)
-[![composer.lock](https://poser.pugx.org/dgvai/laravel-invoicer/composerlock)](https://packagist.org/packages/dgvai/laravel-invoicer
+[![composer.lock](https://poser.pugx.org/dgvai/laravel-invoicer/composerlock)](https://packagist.org/packages/dgvai/laravel-invoicer)
 
 This package is built for Invoice Management and Generation for Laravel 5.5+, 6.x, 7.x (not tested for lower versions)
 
@@ -28,6 +28,7 @@ This package is built for Invoice Management and Generation for Laravel 5.5+, 6.
         - [Set Shipping Cost](#set-shipping-cost)
         - [Set Home Delivery Cost](#set-home-delivery-cost)
         - [Add Items](#add-items)
+        - [Apply Coupon Discount](#apply-coupon-discount)
         - [Set Payment State](#set-payment-state)
         - [Generate](#generate)
     - [Changelog](#changelog)
@@ -159,6 +160,15 @@ class InvoiceController extends Controller
 <kbd>required</kbd> Item Discount : ``decimal``  
 <kbd>optional</kbd> Item Extra Cost : ``decimal``  
 <kbd>optional</kbd> Item Additional Shipping Cost : ``decimal``  
+
+### Apply Coupon Discount
+**Description:** Apply coupon discount to your orders invoice.
+```php
+    applyCoupon($code, $discount)
+```
+**Params**  
+<kbd>required</kbd> Coupon Code : ``string``  
+<kbd>required</kbd> Coupon Discount : ``integer/float`` 
 
 ### Set Payment State
 **Description:** Set the payment state of the invoice. Also add some notes.
